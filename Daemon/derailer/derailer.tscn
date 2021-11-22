@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entities/enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://derailer/derailer.gd" type="Script" id=2]
+[ext_resource path="res://derailer/derailer.png" type="Texture" id=3]
+
+[node name="KinematicBody2D" instance=ExtResource( 1 )]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 3 )
+
+[node name="muzzle" parent="gun" index="0"]
+position = Vector2( 28.2453, 0 )
+
+[node name="charge_timer" type="Timer" parent="." index="3"]
+wait_time = 0.8
+one_shot = true
+
+[node name="shoot_timer" type="Timer" parent="." index="4"]
+wait_time = 0.35
+one_shot = true
+
+[connection signal="timeout" from="charge_timer" to="." method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]

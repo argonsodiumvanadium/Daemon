@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entities/bullet/bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://chronos/bullet.jpeg" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.17641, 8.16873 )
+
+[node name="bullet" instance=ExtResource( 1 )]
+speed = 1000
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
